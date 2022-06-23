@@ -1,2 +1,8 @@
-# Skincare
-![Skincare](https://github.com/Edanriell/oldProjects-2/blob/master/AnimatedText/skincare.png?raw=true)
+# MainCoon Desktop
+![MainCoon-Desktop](https://github.com/Edanriell/MainCoon/blob/master/MainCoon-desktop.png?raw=true)
+
+# MainCoon Tablet
+![MainCoon-Tablet](https://github.com/Edanriell/MainCoon/blob/master/MainCoon-tablet.png?raw=true)
+
+# MainCoon Mobile
+![MainCoon-Mobile](https://github.com/Edanriell/MainCoon/blob/master/MainCoon-mobile.png?raw=true)
