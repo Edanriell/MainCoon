@@ -1,0 +1,66 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+@use "../vendors/include-media" as *;
+
+$breakpoints: (
+	phone: 320px,
+	tablet: 768px,
+	desktop: 1366px
+);
+
+.Header {
+    background-color: var(--secondary-bg);
+
+    &-Content{
+        padding-top: 2.7rem;
+        padding-bottom: 2.7rem;
+    }
+
+    &-LogotypeLink {
+        cursor: default;
+        @include flex(center, center, row);
+    }
+    
+    &-LogotypeImage {
+        width: 5rem;
+        height: 2.2rem;
+        fill: var(--clr-accent-300);
+        stroke: var(--clr-primary-300);
+        stroke-width: 0.8;
+        transition: fill 0.6s ease;
+        z-index: 2;
+
+        &:hover, &:focus {
+            fill: var(--clr-secondary-300);
+        }
+    }
+}
+
+@include media(">=tablet") {
+    .Header {
+        &-Content{
+            padding-top: 2.9rem;
+            padding-bottom: 2.9rem;
+        }
+        
+        &-LogotypeImage {
+            width: 5.4rem;
+            height: 2.4rem;
+        }
+    }
+}
+
+@include media(">=desktop") {
+    .Header {
+        &-Content{
+            padding-top: 5rem;
+            padding-bottom: 5rem;
+        }
+        
+        &-LogotypeImage {
+            width: 5.5rem;
+            height: 2.5rem;
+            z-index: 2;
+        }
+    }
+}

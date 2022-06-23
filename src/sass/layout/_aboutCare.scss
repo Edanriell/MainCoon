@@ -1,0 +1,200 @@
+@use "../abstracts/mixins" as *;
+@use "../vendors/include-media" as *;
+
+$breakpoints: (
+	phone: 320px,
+	tablet: 768px,
+	desktop: 1366px
+);
+
+.AboutCare {
+    background: url("../images/cat-bg.jpg") no-repeat center;
+    background-size: cover;
+
+    &-Content {
+        padding-top: 5.5rem;
+        padding-bottom: 6rem;
+    }
+
+    &-ArticleList {
+        margin-top: 3.5rem;
+    }
+}
+
+.ArticleList {
+    @include flex(center, center, column);
+
+    &-Item {
+        width: max(29rem, 70%);
+        display: grid;
+        grid-template-columns: 1fr 4.6rem;
+        margin-bottom: 3rem;
+        padding-left: 2.5rem;
+        box-sizing: border-box;
+        background: transparent;
+        border: 0.5px solid var(--clr-accent-300);
+        transition: background 0.6s ease;
+        min-height: 17.2rem;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+
+        &:hover {
+            background: var(--clr-neutral-700);
+            transition: background 0.3s ease;
+        }
+    }
+
+    &-ItemContent {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+        @include flex(flex-start, center, column);
+    }
+
+    &-ItemTitle {
+        font-family: var(--ff-normal-700);
+        font-size: var(--fs-320-18);
+        color: var(--clr-accent-300);
+        line-height: 2.109rem;
+        font-style: normal;
+        font-weight: 700;
+    }
+    
+    &-ItemText {
+        font-family: var(--ff-normal-300);
+        font-size: var(--fs-320-14);
+        color: var(--clr-secondary-300);
+        line-height: 1.96rem;
+        font-style: normal;
+        font-weight: 300;
+        margin-top: 1rem;
+        width: max(22rem, 80%);
+    }
+
+    &-Button {
+        display: block;
+        width: 4.6rem;
+        height: 100%;
+        background-color: var(--clr-accent-300);
+        transition: background 0.6s ease, border-left 0.6s ease;
+        box-sizing: border-box;
+        border-left: 0.05rem solid transparent;
+        @include flex(center, center, column);
+
+        &:hover {
+            background: var(--clr-neutral-700);
+            border-left: 0.05rem solid var(--clr-accent-300);
+            transition: background 0.3s ease, border-left 0.3s ease;
+        }
+    }
+
+    &-ButtonImage {
+        fill: none;
+        stroke: var(--clr-secondary-300);
+        stroke-width: 0.05rem;
+        width: 1rem;
+        height: 2rem;
+    }
+}
+
+@include media(">=tablet") {
+	.AboutCare {
+        &-Content {
+            padding-top: 9rem;
+            padding-bottom: 10rem;
+        }
+    
+        &-ArticleList {
+            margin-top: 4rem;
+        }
+    }
+    
+    .ArticleList {
+        &-Item {
+            width: max(55.8rem, 76%);
+            grid-template-columns: 1fr 5.9rem;
+            margin-bottom: 2rem;
+            padding-left: 5rem;
+            min-height: 19rem;
+
+            // width: auto;
+            // min-width: 55.8rem;
+        }
+
+        &-ItemContent {
+            padding-top: 4rem;
+            padding-bottom: 4rem;
+        }
+    
+        &-ItemTitle {
+            font-size: var(--fs-768-22);
+            line-height: 2.578rem;
+        }
+        
+        &-ItemText {
+            font-size: var(--fs-768-14);
+            line-height: 2.297rem;
+            width: max(39rem, 70%);
+
+            // max-width: 39rem;
+        }
+    
+        &-Button {
+            width: auto;
+            max-width: 5.9rem;
+        }
+    
+        &-ButtonImage {
+            width: 4rem;
+            height: 2rem;
+        }
+    }
+}
+
+@include media(">=desktop") {
+	.AboutCare {
+        &-Content {
+            padding-top: 8.5rem;
+            padding-bottom: 10rem;
+        }
+    
+        &-ArticleList {
+            margin-top: 5rem;
+        }
+    }
+    
+    .ArticleList {
+        display: grid;
+        grid-template-columns: repeat(2, auto);
+        gap: 4rem;
+
+        &-Item {
+            width: auto;
+            min-width: 55.8rem;
+            min-height: 19rem;
+            grid-template-columns: 1fr 6rem;
+            margin-bottom: 0;
+            padding-left: 6rem;
+        }
+
+        &-ItemContent {
+            padding-top: 4rem;
+            padding-bottom: 4rem;
+        }
+    
+        &-ItemTitle {
+            font-size: var(--fs-1366-22);
+        }
+        
+        &-ItemText {
+            font-size: var(--fs-1366-14);
+            max-width: 39rem;
+        }
+    
+        &-Button {
+            width: auto;
+            max-width: 6rem;
+        }
+    }
+}

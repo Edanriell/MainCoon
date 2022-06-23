@@ -1,0 +1,195 @@
+@use "../vendors/include-media" as *;
+@use "../abstracts/mixins" as *;
+
+$breakpoints: (
+	phone: 320px,
+	tablet: 768px,
+	desktop: 1366px
+);
+
+.PetsSlider320 {
+    width: 23.4rem;
+    height: 24.8rem;
+    margin-bottom: 4.5rem;
+
+    // overflow: auto !important;
+
+    &-Wrapper {
+        position: relative;
+    }
+
+    &-Slide {
+        width: 23.4rem;
+        height: 24.8rem;
+
+        // TEMPORARY DISABLED !
+        // &:nth-child(1) {
+        //     display: none;
+        // }
+
+        // &:nth-child(2) {
+        //     display: none;
+        // }
+
+        // TEMPORARY STUFF
+    }
+
+    &-SlideImage {
+        width: 23.4rem;
+        height: 24.8rem;
+        object-fit: cover;
+    }
+
+    &-NextSlideButton {
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        left: -2rem;
+        transform: translateY(-50%);
+    }
+
+    &-PreviousSlideButton {
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        right: -2rem;
+        transform: translateY(-50%);
+    }
+
+    &-ButtonIcon {
+        fill: none;
+        width: 0.8rem;
+        height: 1.8rem;
+        stroke: var(--clr-accent-300);
+        stroke-width: 0.2rem;
+        transition: filter 0.6s ease;
+
+        &:hover {
+            filter: brightness(140%);
+            transition: filter 0.3s ease;
+        }
+    }
+}
+
+.PetTabs-TabContent {
+    display: none;
+}
+
+.PetsSlider768 {
+    display: none;
+}
+
+@include media(">=tablet") {
+	.PetsSlider320 {
+        display: none;
+    }
+
+    .PetsSlider768 {
+        display: block;
+        margin-bottom: 5.5rem;
+        width: 60rem;
+
+        // @include flex(center, center, row);
+    
+        &-Wrapper {
+            position: relative;
+
+            // @include flex(center, center, row);
+        }
+    
+        &-Slide {
+            width: 47.4rem !important;
+
+            // width: 30rem !important;
+            // height: 19.7rem !important;
+
+            // TEMPORARY STUFF
+            &:nth-child(1) {
+                order: 3;
+
+                // margin-left: -23.5rem;
+                // z-index: -1;
+            }
+
+            &:nth-child(2) {
+                order: 1;
+
+                // margin-right: -23.5rem;
+                // z-index: -1;
+            }
+
+            &:nth-child(3) {
+                order: 2;
+            }
+            
+            // TEMPORARY STUFF
+
+        }
+
+        // &-SlideActive {
+        //     width: 47.4rem !important;
+        //     height: 49.6rem !important;
+        // }
+
+        &-ImageWrapper {
+            // width: inherit;
+            // height: inherit;
+            width: 47.4rem !important;
+            height: 49.6rem !important;
+        }
+    
+        &-SlideImage {
+            width: inherit;
+            height: inherit;
+            object-fit: cover;
+        }
+    
+        &-NextSlideButton {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            left: -5.5rem;
+            transform: translateY(-50%);
+        }
+    
+        &-PreviousSlideButton {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            right: -5.5rem;
+            transform: translateY(-50%);
+        }
+    
+        &-ButtonIcon {
+            fill: none;
+            width: 1.2rem;
+            height: 3rem;
+            stroke: var(--clr-accent-300);
+            stroke-width: 0.2rem;
+            transition: filter 0.6s ease;
+    
+            &:hover {
+                filter: brightness(140%);
+                transition: filter 0.3s ease;
+            }
+        }
+    }
+
+    .PetTabs-TabContent {
+        display: none;
+    }
+}
+
+@include media(">=desktop") {
+	.PetsSlider768 {
+        display: none;
+    }
+
+    .PetsSlider768-NextSlideButton {
+        display: none;
+    }
+
+    .PetsSlider768-PreviousSlideButton {
+        display: none;
+    }
+}

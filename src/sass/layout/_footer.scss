@@ -1,0 +1,235 @@
+@use "../abstracts/mixins" as *;
+@use "../vendors/include-media" as *;
+
+$breakpoints: (
+	phone: 320px,
+	tablet: 768px,
+	desktop: 1366px
+);
+
+.Footer {
+    background-color: var(--clr-neutral-500);
+    padding-top: 3.5rem;
+    padding-bottom: 4rem;
+
+    &-Content {
+        position: relative;
+        @include flex(center, center, column);
+    }
+
+    &-LogotypeImageWrapper {
+        cursor: auto;
+        order: 3;
+    }
+
+    &-LogotypeImage {
+        width: 5.6rem;
+        height: 2.5rem;
+        fill: var(--clr-accent-300);
+        stroke: var(--clr-primary-300);
+        stroke-width: 0.8;
+        transition: fill 0.6s ease;
+
+        &:hover {
+            transition: fill 0.3s ease;
+            fill: var(--clr-secondary-300);
+        }
+    }
+
+    &-FooterSocialButtonList {
+        margin-bottom: 2.5rem;
+    }
+
+    &-Address {
+        margin-bottom: 2rem;
+    }
+}
+
+.FooterSocialButtonList {
+    flex-wrap: wrap;
+    order: 2;
+    @include flex(center, center, row);
+
+    &-Item {
+        margin-right: 2rem;
+
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+
+    &-Item:nth-child(1) svg {
+        width: 0.7rem;
+        height: 1.6rem;
+    }
+
+    &-Item:nth-child(2) svg {
+        width: 2.2rem;
+        height: 1.6rem;
+    }
+
+    &-Item:nth-child(3) svg {
+        width: 2.5rem;
+        height: 1.4rem;
+    }
+
+    &-Link {
+        width: inherit;
+        height: inherit;
+    }
+
+    &-IconImage {
+        fill: var(--clr-accent-300);
+        transition: fill 0.6s ease;
+
+        &:hover, &:focus {
+            transition: fill 0.3s ease;
+            fill: var(--clr-secondary-300);
+        }
+    }
+}
+
+.Address {
+    order: 1;
+    row-gap: 1rem;
+    @include flex(center, center, column);
+
+    &-Main {
+        font-family: var(--ff-normal-400);
+        font-size: var(--fs-320-14);
+        color: var(--clr-accent-1000);
+        line-height: 1.96rem;
+        font-style: normal;
+        font-weight: 400;
+        transition: color 0.6s ease;
+
+        &:hover {
+            color: var(--clr-accent-300);
+            transition: color 0.3s ease;
+        }
+    }
+
+    &-PhoneNumber {
+        font-family: var(--ff-normal-400);
+        font-size: var(--fs-320-14);
+        color: var(--clr-accent-600);
+        line-height: 1.96rem;
+        font-style: normal;
+        font-weight: 400;
+        transition: color 0.6s ease;
+
+        &:hover {
+            color: var(--clr-accent-300);
+            transition: color 0.3s ease;
+        }
+    }
+}
+
+@include media(">=tablet") {
+	.Footer {
+        padding-top: 4rem;
+        padding-bottom: 4rem;
+    
+        &-Content {
+            @include flex(center, space-between, row);
+        }
+    
+        &-LogotypeImageWrapper {
+            display: none;
+        }
+    
+        &-FooterSocialButtonList {
+            margin-bottom: 0;
+        }
+    
+        &-Address {
+            margin-bottom: 0;
+        }
+    }
+    
+    .FooterSocialButtonList {
+        order: 1;
+    
+        &-Item {
+            margin-right: 1rem;
+        }
+
+        &-Item:nth-child(1) svg {
+            width: 0.7rem;
+            height: 1.5rem;
+        }
+
+        &-Item:nth-child(2) svg {
+            width: 2rem;
+            height: 1.4rem;
+        }
+
+        &-Item:nth-child(3) svg {
+            width: 2.1rem;
+            height: 1.2rem;
+        }
+    }
+    
+    .Address {
+        order: 2;
+        row-gap: 0;
+        column-gap: 8rem;
+        @include flex(center, center, row);
+    
+        &-Main {
+            font-size: var(--fs-768-14);
+            line-height: 2.658rem;
+        }
+    
+        &-PhoneNumber {
+            font-size: var(--fs-768-14);
+            line-height: 2.658rem;
+        }
+    }
+}
+
+@include media(">=desktop") {
+    .Footer {
+        padding-top: 7.5rem;
+        padding-bottom: 5rem;
+    
+        &-Content {
+            @include flex(center, flex-start, row);
+        }
+    
+        &-LogotypeImageWrapper {
+            display: block;
+            order: 1;
+            margin-left: 4rem;
+        }
+
+        &-LogotypeImage{
+            width: 4.7rem;
+            height: 2.1rem;
+        }
+    
+        &-FooterSocialButtonList {
+            margin-bottom: 0;
+            order: 2;
+            margin-left: 12.5rem;
+            margin-right: 15rem;
+        }
+    
+        &-Address {
+            margin-bottom: 0;
+            order: 3;
+        }
+    }
+    
+    .Address {
+        column-gap: 7rem;
+    
+        &-Main {
+            font-size: var(--fs-1366-14);
+        }
+    
+        &-PhoneNumber {
+            font-size: var(--fs-1366-14);
+        }
+    }
+}

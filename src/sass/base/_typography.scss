@@ -1,0 +1,78 @@
+@use "../abstracts/mixins" as *;
+@use "../vendors/include-media" as *;
+
+
+$breakpoints: (
+	phone: 320px,
+	tablet: 768px,
+	desktop: 1366px
+);
+
+.SectionHeader {
+    flex-wrap: nowrap;
+    @include flex(center, center, column);
+
+    &-Title {
+        font-family: var(--ff-normal-400b);
+        font-size: var(--fs-320-28);
+        font-style: normal;
+        font-weight: 400;
+        line-height: 3.2rem;
+        color: var(--clr-secondary-300);
+        text-align: center;
+        margin-bottom: 2.5rem;
+        max-width: 22rem;
+    }
+    
+    &-Text {
+        font-family: var(--ff-normal-300);
+        font-size: var(--fs-320-14);
+        font-style: normal;
+        font-weight: 300;
+        line-height: 2rem;
+        color: var(--clr-accent-300);
+        text-align: center;
+        word-spacing: 0.1rem;
+    }
+}
+
+@include media(">=phone") {
+	.SectionHeader {
+        &-Title {
+            max-width: 38rem;
+        }
+        
+        &-Text {
+            max-width: 42rem;
+        }
+    }
+}
+
+@include media(">=tablet") {
+	.SectionHeader {
+        &-Title {
+            font-size: var(--fs-768-36);
+            line-height: 4.158rem;
+            max-width: 48rem;
+        }
+        
+        &-Text {
+            font-size: var(--fs-768-16);
+            line-height: 2.625rem;
+            max-width: 51.8rem;
+        }
+    }
+}
+
+@include media(">=desktop") {
+	.SectionHeader {
+        &-Title {
+            font-size: var(--fs-1366-36);
+        }
+        
+        &-Text {
+            font-size: var(--fs-1366-16);
+            max-width: 75rem;
+        }
+    }
+}

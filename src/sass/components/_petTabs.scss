@@ -1,0 +1,127 @@
+@use "../abstracts/mixins" as *;
+@use "../vendors/include-media" as *;
+
+$breakpoints: (
+	phone: 320px,
+	tablet: 768px,
+	desktop: 1366px
+);
+
+.PetTabs {
+    position: relative;
+    min-height: 34rem;
+
+    &-PetCategories {
+        flex-wrap: nowrap;
+        @include flex(flex-start, space-between, row);
+    }
+
+    &-CategoryName {
+        font-family: var(--ff-normal-500);
+        font-style: normal;
+        font-weight: 500;
+        line-height: 1.9rem;
+        font-size: var(--fs-320-16);
+        color: var(--clr-neutral-300);
+    }
+
+    &-TabButton {
+        font-family: inherit;
+        font-style: inherit;
+        font-weight: inherit;
+        line-height: inherit;
+        font-size: inherit;
+        color: inherit;
+        cursor: pointer;
+        transition: color 0.6s ease;
+
+        &:hover, &:focus {
+            transition: color 0.3s ease;
+            color: var(--clr-secondary-300);
+        }
+    }
+
+    &-ActiveButton{
+        color: var(--clr-secondary-300);
+    }
+
+    &-Tabs {
+        margin-top: 3.5rem;
+        position: relative;
+    }
+
+    &-Tab {
+        position: relative;
+    }
+}
+
+@include media(">=tablet") {
+	.PetTabs {
+        &-PetCategories {
+            // change to space-around or set the max width
+            flex-wrap: wrap;
+            @include flex(center, center, row);
+        }
+    
+        &-CategoryName {
+            font-family: var(--ff-normal-500);
+            line-height: 2.109rem;
+            font-size: var(--fs-768-18);
+            margin-right: 4.5rem;
+
+            &:last-child {
+                margin-right: 0;
+            }
+        }
+
+        &-Tabs {
+            margin-top: 4rem;
+        }
+    }
+}
+
+@include media(">=desktop") {
+	.PetTabs {
+        display: block;
+
+        &-TabContent {
+            display: grid !important;
+            grid-template-columns: 51rem 47rem;
+            grid-template-rows: 21rem 24rem;
+            gap: 3rem;
+            grid-template-areas: 
+                "cat1 cat3"
+                "cat2 cat3"
+            ;
+            margin-bottom: 5.5rem;
+        }
+
+        &-ImageWrapper {
+            position: relative;
+
+            &:nth-child(1) {
+                grid-area: cat1;
+                width: 51rem;
+                height: 21rem;
+            }
+
+            &:nth-child(2) {
+                grid-area: cat2;
+                width: 51rem;
+                height: 24rem;
+            }
+
+            &:nth-child(3) {
+                grid-area: cat3;
+                width: 47rem;
+                height: 48rem;
+            }
+        }
+
+        &-Image {
+            width: inherit;
+            height: inherit;
+            object-fit: cover;
+        }
+    }
+}

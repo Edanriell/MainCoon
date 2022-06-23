@@ -1,0 +1,219 @@
+@use "../abstracts/mixins" as *;
+@use "../abstracts/placeholders" as *;
+@use "../vendors/include-media" as *;
+
+$breakpoints: (
+	phone: 320px,
+	tablet: 768px,
+	desktop: 1366px
+);
+
+.BreedCharacteristics {
+    padding-bottom: 5.5rem;
+
+    &-Content {
+        position: relative;
+    }
+
+    &-ImageWrapper {
+        margin-top: 2.5rem;
+        position: relative;
+        @include flex(center, center, row);
+
+        &::before {
+            @extend %black-filled-circle;
+        }
+
+        &::after {
+            @extend %circle-outlined;
+        }
+    }
+
+    &-Image {
+        object-fit: cover;
+        width: inherit;
+        height: inherit;
+    }
+
+    &-CharacteristicsList {
+        margin-top: 5rem;
+    }
+}
+
+.CharacteristicsList {
+    @include flex(center, flex-start, column);
+
+    &-Item {
+        font-family: var(--ff-normal-300);
+        font-size: var(--fs-320-14);
+        color: var(--clr-secondary-300);
+        line-height: 1.96rem;
+        font-style: normal;
+        font-weight: 300;
+        text-align: left;
+        margin-bottom: 2rem;
+        max-width: 27.2rem;
+        @include flex(flex-start, flex-start, row);
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+
+        &::before {
+            @extend %small-brown-dot;
+        }
+    }
+}
+
+@include media(">=tablet") {
+	.BreedCharacteristics {
+        position: relative;
+        padding-bottom: 0;
+
+        &-Content {
+            position: relative;
+        }
+    
+        &-ImageWrapper {
+            margin-top: 0;
+
+            &::before {
+                width: 34.8rem;
+                height: 34.8rem;
+            }
+    
+            &::after {
+                width: 42.3rem;
+                height: 42.3rem;
+            }
+        }
+    }
+    
+    .CharacteristicsList {
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 50%;
+
+        &-Item {
+            max-width: 16rem;
+            font-size: var(--fs-768-16);
+            line-height: 2.456rem;
+           
+            &:nth-child(1) {
+                position: absolute;
+                top: 29.5rem;
+                left: -34.3rem;
+                text-align: right;
+                @include flex(flex-start, flex-start, row-reverse);
+
+                &::before {
+                    margin-right: 0;
+                    margin-left: 1rem;
+                }
+            }
+
+            &:nth-child(2) {
+                position: absolute;
+                top: 35.5rem;
+                right: -36.3rem;
+                text-align: left;
+            }
+
+            &:nth-child(3) {
+                position: absolute;
+                top: 51.5rem;
+                right: -32.8rem;
+                text-align: left;
+            }
+
+            &:nth-child(4) {
+                position: absolute;
+                top: 47.5rem;
+                left: -35rem;
+                text-align: right;
+                @include flex(flex-start, flex-start, row-reverse);
+
+                &::before {
+                    margin-right: 0;
+                    margin-left: 1rem;
+                }
+            }
+        }
+    }
+}
+
+@include media(">=desktop") {
+    .BreedCharacteristics {
+        position: relative;
+        padding-bottom: 0;
+
+        &-Content {
+            position: relative;
+        }
+    
+        &-ImageWrapper {
+            margin-top: 0;
+
+            &::before {
+                width: 51.9rem;
+                height: 51.9rem;
+            }
+    
+            &::after {
+                width: 63.1rem;
+                height: 63.1rem;
+            }
+        }
+    }
+    
+    .CharacteristicsList {
+        &-Item {
+            max-width: 27.9rem;
+            font-size: var(--fs-1366-16);
+
+            &::before {
+                width: 1.5rem;
+                height: 1.5rem;
+            }
+           
+            &:nth-child(1) {
+                top: 37rem;
+                left: -55.3rem;
+
+                &::before {
+                    margin-right: 0;
+                    margin-left: 2rem;
+                }
+            }
+
+            &:nth-child(2) {
+                top: 45rem;
+                right: -58rem;
+
+                &::before {
+                    margin-right: 2rem;
+                }
+            }
+
+            &:nth-child(3) {
+                top: 66rem;
+                right: -55rem;
+
+                &::before {
+                    margin-right: 2rem;
+                }
+            }
+
+            &:nth-child(4) {
+                top: 60rem;
+                left: -57.4rem;
+
+                &::before {
+                    margin-right: 0;
+                    margin-left: 2em;
+                }
+            }
+        }
+    }
+}

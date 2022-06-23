@@ -1,0 +1,122 @@
+@use "../abstracts/mixins" as *;
+@use "../vendors/include-media" as *;
+
+$breakpoints: (
+	phone: 320px,
+	tablet: 768px,
+	desktop: 1366px
+);
+
+.Team {
+    padding-top: 5rem;
+    background-color: var(--clr-primary-400);
+    padding-bottom: 6rem;
+
+    &-Content {
+        position: relative;
+    }
+
+    &-TeamSlider {
+        margin-top: 3.5rem;
+    }
+}
+
+.SocialButtons {
+    @include flex(center, center, row);
+
+    &-Button {
+        margin-right: 1.5rem;
+
+        &:last-child {
+            margin-right: 0;
+        }
+
+        &:nth-child(1) svg {
+            width: 0.5rem;
+            height: 1.2rem;
+        }
+
+        &:nth-child(2) svg {
+            width: 1.6rem;
+            height: 1.2rem;
+        }
+
+        &:nth-child(3) svg {
+            width: 1.8rem;
+            height: 1rem;
+        }
+    }
+
+    &-Link {
+        width: auto;
+        height: auto;
+    }
+
+    &-IconImage {
+        fill: var(--clr-secondary-300);
+        transition: fill 0.6s ease;
+
+        &:hover {
+            fill: var(--clr-accent-300);
+            transition: fill 0.3s ease;
+        }
+    }
+}
+
+@include media(">=tablet") {
+	.Team {
+        padding-top: 8.5rem;
+        padding-bottom: 22rem;
+    
+        &-TeamSlider {
+            margin-top: 5rem;
+        }
+    }
+    
+    .SocialButtons {
+        @include flex(center, flex-start, row);
+    
+        &-Button {
+            margin-right: 1rem;
+    
+            &:last-child {
+                margin-right: 0;
+            }
+
+            &:nth-child(1) svg {
+                width: 0.7rem;
+                height: 1.5rem;
+            }
+    
+            &:nth-child(2) svg {
+                width: 2rem;
+                height: 1.4rem;
+            }
+    
+            &:nth-child(3) svg {
+                width: 2.1rem;
+                height: 1.2rem;
+            }
+        }
+    
+        &-Link {
+            width: auto;
+            height: auto;
+        }
+    }
+}
+
+@include media(">=desktop") {
+	.Team header > p {
+        max-width: 51rem;
+    }
+
+    .Team {
+        padding-top: 8rem;
+        padding-bottom: 10rem;
+    
+        &-TeamSlider {
+            margin-top: 4.5rem;
+        }
+    }
+}

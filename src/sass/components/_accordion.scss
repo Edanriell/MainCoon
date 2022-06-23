@@ -1,0 +1,283 @@
+@use "../abstracts/mixins" as *;
+@use "../vendors/include-media" as *;
+
+$breakpoints: (
+	phone: 320px,
+	tablet: 768px,
+	desktop: 1366px
+);
+
+.Accordion {
+    width: max(29rem, 80%);
+    margin: 0 auto;
+    display: grid;
+    grid-template-rows: repeat(4, auto);
+    row-gap: 3rem;
+
+    &-Item {
+        position: relative;
+    }
+
+    &-ItemActive {
+        position: relative;
+
+        .Accordion-ButtonPlusIcon {
+            display: none;
+        }
+
+        .Accordion-ButtonMinusIcon {
+            display: block;
+        }
+
+        .Accordion-ButtonIconWrapper {
+            background-color: var(--clr-accent-300);
+        }
+
+        &:hover span {
+            background: var(--clr-neutral-500) !important;
+        }
+
+        &:hover svg {
+            transition: stroke 0.3s ease;
+            stroke: var(--clr-accent-300);
+        }
+    }
+
+    &-ItemTitle {
+        border: 0.05rem solid var(--clr-accent-800);
+        box-sizing: border-box;
+        min-height: 6rem;
+        padding-left: 1.5rem;
+        background: transparent;
+        transition: background 0.6s ease;
+        cursor: pointer;
+        @include flex(center, space-between, row);
+
+        &:hover {
+            background: var(--clr-neutral-500);
+            transition: background 0.3s ease;
+        }
+
+       &:hover .Accordion-ButtonIconWrapper {
+            background-color: var(--clr-accent-300);
+            transition: background 0.3s ease;
+        }
+
+        &:hover svg {
+            fill: var(--clr-secondary-300);
+            transition: fill 0.3s ease;
+        }
+    }
+
+    &-Button {
+        font-family: var(--ff-normal-500);
+        font-size: var(--fs-320-14);
+        color: var(--clr-accent-500);
+        line-height: 1.96rem;
+        font-weight: 500;
+        text-align: left;
+        font-style: normal;
+        cursor: pointer;
+        pointer-events: none;
+    }
+
+    &-ButtonText {
+        max-width: 25rem;
+        display: block;
+        transition: background 0.6s ease;
+        pointer-events: none;
+    }
+
+    &-ButtonIconWrapper {
+        z-index: 2;
+        width: 4.3rem;
+        min-height: 6rem;
+        border-left: 0.05rem solid var(--clr-accent-800);
+        transition: background 0.6s ease;
+        pointer-events: none;
+        @include flex(center, center, row);
+    }
+
+    &-ButtonMinusIcon {
+        fill: none;
+        stroke: var(--clr-secondary-300);
+        width: 1.7rem;
+        height: 0.2rem;
+        display: none;
+        stroke-opacity: 100%;
+        transition: stroke 0.6s ease;
+        pointer-events: none;
+    }
+
+    &-ButtonPlusIcon {
+        fill: var(--clr-accent-300);
+        width: 1.8rem;
+        height: 2rem;
+        transition: fill 0.6s ease;
+        pointer-events: none;
+    }
+
+    &-Collapse {
+        border: 0.05rem solid var(--clr-accent-800);
+        border-top: none;
+        box-sizing: border-box;
+        
+        // padding: 1.5rem 2.7rem 1.5rem 1.5rem; // off
+        display: none;
+        transition: background 0.6s ease;
+        overflow: hidden;
+
+        &:hover {
+            background: var(--clr-neutral-500);
+            transition: background 0.3s ease;
+        }
+    }
+
+    &-CollapseActive {
+        // display: block;
+    }
+
+    &-Body {
+        display: grid;
+        grid-template-rows: auto;
+        row-gap: 1rem;
+        padding: 1.5rem 2.7rem 1.5rem 1.5rem;
+    }
+
+    &-Text {
+        font-family: var(--ff-noram-300);
+        font-size: var(--fs-320-14);
+        color: var(--clr-accent-500);
+        line-height: 1.96rem;
+        font-style: normal;
+        font-weight: 300;
+        text-align: left;
+
+        // padding: 40px; // changed
+    }
+}
+
+@include media(">=tablet") {
+    .Accordion {
+        row-gap: 2.5rem;
+        width: max(63.4rem, 80%);
+        margin: 0 auto;
+
+        &-Item {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            grid-template-rows: repeat(2, auto);
+
+            // grid-template-columns: 12rem max(55.3rem, 80%);
+            // grid-template-rows: 12rem max(55.3rem, 80%);
+            grid-template-areas: 
+                "number button"
+                ". content"
+            ;
+            column-gap: 2rem;
+
+            &::before {
+                content: attr(data-number);
+                grid-area: number;
+                font-family: var(--ff-normal-700);
+                font-size: var(--fs-768-50);
+                color: var(--clr-accent-300);
+                line-height: 5.859rem;
+                font-style: normal;
+                font-weight: 700;
+                align-self: center;
+                margin-left: 3.5rem;
+            }
+        }
+    
+        &-ItemTitle {
+            min-height: 7.5rem;
+            padding-left: 3rem;
+            grid-area: button;
+        }
+    
+        &-Button {
+            font-size: var(--fs-768-16);
+            line-height: 1.875rem;
+        }
+
+        &-ButtonText {
+            max-width: 38rem;
+        }
+    
+        &-ButtonIconWrapper {
+            width: 7.2rem;
+            min-height: 7.5rem;
+        }
+    
+        &-ButtonPlusIcon {
+            width: 1.8rem;
+            height: 3.9rem;
+        }
+    
+        &-Collapse {
+            grid-area: content;
+            
+            // padding: 3rem 14rem 3rem 3rem;  // off
+        }
+        
+        &-Body {
+            padding: 3rem 14rem 3rem 3rem;
+            row-gap: 2.5rem;
+        }
+    
+        &-Text {
+            font-size: var(--fs-768-16);
+            line-height: 2.464rem;
+        }
+    }
+}
+
+@include media(">=desktop") {
+    .Accordion {
+        row-gap: 4rem;
+
+        &-Item {
+            column-gap: 4rem;
+            margin-right: 3.5rem;
+
+            &::before {
+                font-size: var(--fs-1366-70);
+                line-height: 8.203rem;
+                margin-left: 0;
+            }
+        }
+    
+        &-ItemTitle {
+            min-height: 11rem;
+            padding-left: 4rem;
+            grid-area: button;
+        }
+    
+        &-Button {
+            font-size: var(--fs-1366-16);
+        }
+
+        &-ButtonText {
+            max-width: 55rem;
+        }
+    
+        &-ButtonIconWrapper {
+            width: 10.5rem;
+            min-height: 11rem;
+        }
+    
+        &-Collapse {
+            // padding: 5rem 20rem 5rem 4rem; // off
+        }
+        
+        &-Body {
+            row-gap: 3rem;
+            padding: 5rem 20rem 5rem 4rem;
+        }
+    
+        &-Text {
+            font-size: var(--fs-1366-16);
+        }
+    }
+}

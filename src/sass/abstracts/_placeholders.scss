@@ -1,0 +1,37 @@
+%black-filled-circle {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 23rem;
+    height: 23rem;
+    box-shadow: 0 4px 4px var(--clr-neutral-600);
+    background-color: var(--clr-neutral-500);
+    border-radius: 50%;
+    z-index: -1;
+}
+
+%circle-outlined {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 28rem;
+    height: 28rem;
+    border: 0.05rem solid var(--clr-accent-300);
+    border-radius: 50%;
+    z-index: -2;
+}
+
+%small-brown-dot {
+    content: "";
+    width: 0.8rem;
+    height: 0.8rem;
+    border-radius: 50%;
+    background-color: var(--clr-accent-300);
+    flex-shrink: 0;
+    margin-right: 1rem;
+    margin-top: 0.5rem;
+}

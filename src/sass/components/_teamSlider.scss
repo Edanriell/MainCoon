@@ -1,0 +1,469 @@
+@use "../abstracts/mixins" as *;
+@use "../vendors/include-media" as *;
+
+$breakpoints: (
+	phone: 320px,
+	tablet: 768px,
+	desktop: 1366px
+);
+
+.TeamSlider320 {
+    position: relative;
+
+    &-Wrapper {
+        position: relative;
+    }
+
+    &-Slide {
+        position: relative;
+        @include flex(center, center, column);
+
+        &::before {
+            content: "";
+            position: absolute;
+            top: 6.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 29rem;
+            height: 27.5rem;
+            background-color: var(--clr-primary-300);
+            z-index: -1;
+        }
+    }
+
+    &-TeamMemberImageWrapper {
+        width: 12.6rem;
+        height: 12.6rem;
+    }
+
+    &-TeamMemberImage {
+        width: inherit;
+        height: inherit;
+        object-fit: cover;
+    }
+
+    &-SlideContent {
+        margin-top: 2rem;
+    }
+
+    &-TeamMemberName {
+        display: grid;
+        grid-template-rows: repeat(2, auto);
+        row-gap: 0.05rem;
+        justify-content: center;
+        text-align: center;
+        font-family: var(--ff-normal-500);
+        font-size: var(--fs-320-18);
+        color: var(--clr-accent-300);
+        line-height: 2.109rem;
+        font-style: normal;
+        font-weight: 500;
+    }
+
+    &-TeamMemberPosition{
+        font-family: var(--ff-normal-400);
+        font-size: var(--fs-320-14);
+        color: inherit;
+        line-height: 1.903rem;
+        font-style: normal;
+        font-weight: 400;
+    }
+
+    &-TeamMemberCommentary {
+        margin-top: 2rem;
+        font-family: var(--ff-normal-300);
+        font-size: var(--fs-320-14);
+        color: var(--clr-secondary-400);
+        line-height: 1.96rem;
+        font-style: normal;
+        font-weight: 300;
+        text-align: center;
+        max-width: 29rem;
+    }
+
+    &-SocialButtons {
+        margin-top: 1.5rem;
+    }
+
+    &-Navigation {
+        position: absolute;
+        top: 0;
+        left: 50%;
+    }
+
+    &-Button {
+        width: auto;
+        height: auto;
+        cursor: pointer;
+        position: absolute;
+        transition: filter 0.6s ease;
+    }
+
+    &-ButtonPrev {
+        top: 5.6rem;
+        right: 8rem;
+        z-index: 20;
+
+        &:hover {
+            filter: brightness(140%);
+            transition: filter 0.3s ease;
+        }
+    }
+
+    &-ButtonNext {
+        top: 5.6rem;
+        left: 8rem;
+        z-index: 20;
+
+        &:hover {
+            filter: brightness(140%);
+            transition: filter 0.3s ease;
+        }
+    }
+
+    &-ButtonIcon {
+        width: 0.8rem;
+        height: 1.8rem;
+        fill: none;
+        stroke: var(--clr-accent-300);
+        stroke-width: 0.2rem;
+    }
+}
+
+.TeamSlider768 {
+    display: none;
+}
+
+.TeamSlider1366 {
+    display: none;
+}
+
+.TeamSlider1366-Navigation {
+    display: none;
+}
+
+@include media(">=tablet") {
+    .TeamSlider320 {
+        display: none;
+    
+        &::before {
+            all: unset;
+        }
+    
+        &-Wrapper,
+        &-Slide,
+        &-TeamMemberImageWrapper,
+        &-TeamMemberImage,
+        &-SlideContent,
+        &-TeamMemberName,
+        &-TeamMemberPosition,
+        &-TeamMemberCommentary,
+        &-Navigation,
+        &-Button,
+        &-ButtonPrev,
+        &-ButtonNext,
+        &-ButtonIcon {
+            display: none;
+        }
+    }
+
+    .TeamSlider1366 {
+        display: none;
+    }
+
+    .TeamSlider1366-Navigation {
+        display: none;
+    }
+
+    .TeamSlider768 {
+        max-width: 66rem;
+        display: block;
+        padding-bottom: 12rem !important;
+        padding-top: 3rem !important;
+        padding-left: 3rem !important;
+        padding-right: 3rem !important;
+        position: relative;
+        flex-shrink: 0;
+        flex-grow: 1;
+        @include flex(center, center, row);
+
+    //     // fix for swiper, slide outline
+
+        &-Wrapper {
+            position: relative;
+            width: 60rem !important;
+        }
+
+        &-Slide {
+            // position: absolute;
+            width: 60rem !important;
+            min-height: 36.2rem;
+            background-color: var(--clr-primary-300);
+            outline: 0.05rem solid var(--clr-accent-1100);
+            outline-offset: 2.5rem;
+            box-sizing: border-box;
+            padding-left: 10.5rem;
+            @include flex(flex-start, center, column);
+        }
+
+        &-TeamMemberImageWrapper {
+            position: absolute;
+            bottom: -12rem;
+            left: 36rem;   
+        }
+
+        &-TeamMemberImage {
+            width: inherit;
+            height: inherit;
+            object-fit: cover;
+            vertical-align: middle;
+        }
+
+        &-TeamMemberName {
+            display: grid;
+            grid-template-rows: repeat(2, auto);
+            row-gap: 1rem;
+            justify-content: start;
+            text-align: left;
+            font-family: var(--ff-normal-500);
+            font-size: var(--fs-768-24);
+            color: var(--clr-accent-300);
+            line-height: 2.813rem;
+            font-style: normal;
+            font-weight: 500;
+        }
+    
+        &-TeamMemberPosition {
+            font-family: var(--ff-normal-400);
+            font-size: var(--fs-768-16);
+            color: inherit;
+            line-height: 2.175rem;
+            font-style: normal;
+            font-weight: 400;
+        }
+
+        &-TeamMemberCommentary {
+            display: inline-block;
+            margin-top: 2.5rem;
+            font-family: var(--ff-normal-300);
+            font-size: var(--fs-768-16);
+            color: var(--clr-secondary-400);
+            line-height: 2.475rem;
+            font-style: normal;
+            font-weight: 300;
+            text-align: left;
+            max-width: 40rem;
+        }
+
+        &-SocialButtons {
+            margin-top: 4.5rem;
+        }
+
+        &-Button {
+            width: auto;
+            height: auto;
+            cursor: pointer;
+            position: absolute;
+            transition: filter 0.6s ease;
+        }
+
+        &-Navigation {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+        }
+
+        &-ButtonPrev {
+            top: -2.8rem;
+            left: 1.8rem;
+            z-index: 20;
+    
+            &:hover {
+                filter: brightness(140%);
+                transition: filter 0.3s ease;
+            }
+        }
+    
+        &-ButtonNext {
+            top: -2.8rem;
+            right: -30.9rem;
+            z-index: 20;
+    
+            &:hover {
+                filter: brightness(140%);
+                transition: filter 0.3s ease;
+            }
+        }
+    
+        &-ButtonIcon {
+            width: 1.2rem;
+            height: 3rem;
+            fill: none;
+            stroke: var(--clr-accent-300);
+            stroke-width: 0.2rem;
+        }
+    }
+}
+
+@include media(">=desktop") {
+    .TeamSlider320 {
+        display: none;
+    }
+
+    .TeamSlider768 {
+        display: none;
+    
+        &::before {
+            all: unset;
+        }
+    
+        &-Wrapper,
+        &-Slide,
+        &-TeamMemberImageWrapper,
+        &-TeamMemberImage,
+        &-SlideContent,
+        &-TeamMemberName,
+        &-TeamMemberPosition,
+        &-TeamMemberCommentary,
+        &-Navigation,
+        &-Button,
+        &-ButtonPrev,
+        &-ButtonNext,
+        &-ButtonIcon {
+            display: none;
+        }
+    }
+
+    .TeamSlider1366 {
+        position: relative;
+        display: block;
+        width: 98.6rem; // border fix
+        padding-bottom: 2.6rem !important; // fix
+
+         // padding-bottom: 5rem !important; // border fix
+
+        &-Wrapper {
+            position: relative;
+        }
+
+        &-Slide {
+            display: grid;
+            grid-template-columns: 36rem 60rem;
+            grid-template-rows: 2.6rem auto;
+            grid-template-areas: 
+                "image ."
+                "image content"
+            ;
+        }
+
+        &-TeamMemberImageWrapper {
+            z-index: 2;
+            margin-right: -5rem;
+            grid-area: image;
+        }
+
+        &-TeamMemberImage {
+            width: inherit;
+            height: inherit;
+            object-fit: cover;
+            vertical-align: middle;
+        }
+
+        &-SlideContent{
+            background-color: var(--clr-primary-300);
+            outline: 0.05rem solid var(--clr-accent-1100);
+            outline-offset: 2.5rem;
+            box-sizing: border-box;
+            padding-left: 10rem;
+            grid-area: content;
+            @include flex(flex-start, center, column);
+        }
+
+        &-TeamMemberName {
+            display: grid;
+            grid-template-rows: repeat(2, auto);
+            row-gap: 1rem;
+            justify-content: start;
+            text-align: left;
+            font-family: var(--ff-normal-500);
+            font-size: var(--fs-1366-24);
+            color: var(--clr-accent-300);
+            line-height: 2.813rem;
+            font-style: normal;
+            font-weight: 500;
+        }
+    
+        &-TeamMemberPosition {
+            font-family: var(--ff-normal-400);
+            font-size: var(--fs-1366-16);
+            color: inherit;
+            line-height: 2.175rem;
+            font-style: normal;
+            font-weight: 400;
+        }
+
+        &-TeamMemberCommentary {
+            display: inline-block;
+            margin-top: 2.5rem;
+            font-family: var(--ff-normal-300);
+            font-size: var(--fs-768-16);
+            color: var(--clr-secondary-400);
+            line-height: 2.475rem;
+            font-style: normal;
+            font-weight: 300;
+            text-align: left;
+            max-width: 40rem;
+        }
+
+        &-SocialButtons {
+            margin-top: 4.5rem;
+        }
+
+        &-Button {
+            width: auto;
+            height: auto;
+            cursor: pointer;
+            position: absolute;
+            transition: filter 0.6s ease;
+        }
+
+        &-Navigation {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            display: block;
+        }
+
+        &-ButtonPrev {
+            top: 0;
+            left: -59.5rem;
+            z-index: 20;
+            transform: translateY(240%);
+
+            &:hover {
+                filter: brightness(140%);
+                transition: filter 0.3s ease;
+            }
+        }
+    
+        &-ButtonNext {
+            top: 0;
+            right: -59rem;
+            z-index: 20;
+            transform: translateY(240%);
+
+            &:hover {
+                filter: brightness(140%);
+                transition: filter 0.3s ease;
+            }
+        }
+    
+        &-ButtonIcon {
+            width: 1.2rem;
+            height: 2.9rem;
+            fill: none;
+            stroke: var(--clr-accent-300);
+            stroke-width: 0.2rem;
+        }
+    }
+}

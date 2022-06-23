@@ -1,0 +1,52 @@
+@use "../abstracts/mixins" as *;
+@use "../vendors/include-media" as *;
+
+$breakpoints: (
+	phone: 320px,
+	tablet: 768px,
+	desktop: 1366px
+);
+
+.Pets {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+
+    &-Content {
+        @include flex(center, center, column);
+    }
+
+    &-PetTabs {
+        margin-top: 3rem;
+        max-height: 200rem
+    }
+}
+
+@include media(">=tablet") {
+	.Pets {
+        padding-top: 10rem;
+        padding-bottom: 9rem;
+        
+        &-PetTabs {
+            margin-top: 4rem;
+        }
+    }
+}
+
+@include media(">=desktop") {
+    .Pets header > p {
+        max-width: 52rem;
+    }
+
+	.Pets {
+        padding-top: 22rem;
+        padding-bottom: 8rem;
+    
+        &-Content {
+            @include flex(center, center, column);
+        }
+    
+        &-PetTabs {
+            margin-top: 4rem;
+        }
+    }
+}

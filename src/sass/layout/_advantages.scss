@@ -1,0 +1,193 @@
+@use "../abstracts/mixins" as *;
+@use "../vendors/include-media" as *;
+
+$breakpoints: (
+	phone: 320px,
+	tablet: 768px,
+	desktop: 1366px
+);
+
+.Advantages {
+    padding-top: 5rem;
+    padding-bottom: 6rem;
+    background-color: var(--clr-primary-400);
+    
+    &-Content {
+        position: relative;
+    }
+
+    &-AdvantagesList {
+        padding-top: 3.5rem;
+    }
+}
+
+.AdvantagesList {
+    flex-wrap: wrap;
+    @include flex(center, center, column);
+    
+    &-Item {
+        min-width: 29rem;
+        min-height: 24.8rem;
+        box-sizing: border-box;
+        background-color: var(--clr-primary-300);
+        margin-bottom: 3rem;
+        @include flex(center, center, column);
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+
+        #IconPlug {
+            margin-bottom: 1.5rem;
+            width: 8rem;
+            height: 8.8rem;
+        }
+
+        #IconTime {
+            margin-bottom: 2rem;
+            width: 8rem;
+            height: 7.1rem;
+        }
+
+        #IconFood {
+            margin-bottom: 1.5rem;
+            width: 5.7rem;
+            height: 8.8rem;
+        }
+    }
+
+    &-Link {
+        min-width: 26rem;
+        min-height: 21.8rem;
+        background-color: transparent;
+        z-index: 1;
+        transition: all 0.6s ease;
+        @include flex(center, center, column);
+
+        &:hover {
+            background-color: var(--clr-accent-300);
+            transition: all 0.3s ease;
+        }
+
+        &:hover svg {
+            fill: var(--clr-secondary-300);
+            stroke: var(--clr-accent-300);
+            transition: all 0.3s ease;
+        }
+
+    }
+
+    &-Image {
+        fill: var(--clr-accent-300);
+        z-index: 2;
+        stroke-width: 2;
+        stroke: var(--clr-primary-300);
+        transition: all 0.6s ease;
+    }
+
+    &-Text {
+        font-family: var(--ff-normal-300);
+        font-size: var(--fs-320-14);
+        color: var(--clr-secondary-300);
+        line-height: 1.96rem;
+        text-align: center;
+        font-style: normal;
+        font-weight: 300;
+        max-width: 20rem;
+        z-index: 2;
+    }
+}
+
+@include media(">=tablet") {
+	.Advantages {
+        padding-top: 8rem;
+        padding-bottom: 10rem;
+           
+        &-AdvantagesList {
+            padding-top: 6rem;
+        }
+    }
+    
+    .AdvantagesList {
+        &-Item {
+            margin-bottom: 4.5rem;
+            min-width: 36rem;
+            min-height: 30.6rem;
+    
+            #IconPlug {
+                margin-bottom: 3.5rem;
+                width: 9.7rem;
+                height: 10.9rem;
+            }
+    
+            #IconTime {
+                margin-bottom: 4.5rem;
+                width: 10.7rem;
+                height: 9.6rem;
+            }
+    
+            #IconFood {
+                margin-bottom: 3.5rem;
+                width: 7rem;
+                height: 11rem;
+            }
+        }
+    
+        &-Link {
+            min-width: 32rem;
+            min-height: 27.2rem; 
+        }
+    
+        &-Text {
+            font-size: var(--fs-768-16);
+            line-height: 2.625rem;
+            max-width: 23rem;
+        }
+    }
+}
+
+@include media(">=desktop") {
+    .Advantages {
+        &-AdvantagesList {
+            padding-top: 5rem;
+        }
+    }
+    
+    .AdvantagesList {
+        column-gap: 4rem;   
+        @include flex(center, center, row);     
+
+        &-Item {
+            margin-bottom: 0;
+            min-width: 36rem;
+            min-height: 30.1rem;
+    
+            #IconPlug {
+                margin-bottom: 3.5rem;
+                width: 9.7rem;
+                height: 10.7rem;
+            }
+    
+            #IconTime {
+                margin-bottom: 4.5rem;
+                width: 10.7rem;
+                height: 9.5rem;
+            }
+    
+            #IconFood {
+                margin-bottom: 3.5rem;
+                width: 7rem;
+                height: 10.8rem;
+            }
+        }
+    
+        &-Link {
+            min-width: 32rem;
+            min-height: 26.7rem; 
+        }
+    
+        &-Text {
+            font-size: var(--fs-1366-16);
+        }
+    }
+}
